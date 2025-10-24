@@ -1,0 +1,34 @@
+package com.example.ba4;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SeconActivity extends AppCompatActivity {
+    Button btnBacktoMain;
+    TextView TextViewName, TextViewHocphi;
+    @Override
+    protected void onCreate(Bundle savedInstance){
+        super.onCreate(savedInstance);
+        setContentView(R.layout.sec_activity);
+
+        TextViewName=findViewById(R.id.getstring2);
+        TextViewHocphi=findViewById(R.id.getint2);
+        btnBacktoMain=findViewById(R.id.btnBacktoMain3);
+
+        // Nhận dữ liệuminh
+        String name = getIntent().getStringExtra("name");
+        int number = getIntent().getIntExtra("number", 0);
+
+        // Hiển thị
+        TextViewName.setText(name);
+        TextViewHocphi.setText(String.valueOf(number));
+
+        // Nút quay lại
+        btnBacktoMain.setOnClickListener(v ->
+                startActivity(new Intent(SeconActivity.this, MainActivity.class)));
+    }
+}
